@@ -1,0 +1,140 @@
+
+% 本模板在github上的武大毕业论文模板（https://github.com/whutug/whu-thesis，在此，向作者WHU TeX User Group致谢）的基础上做了大量的修改，以符合最新的物院毕业论文模板要求（几乎全部），如果后续物院模板更新，则可根据最新模板在cls里做相应的修改。
+% --- Author：Zhengxin Tang
+% 补充：由于时间有限，只修改了硕士的模板！！！！！！！！！！！！
+% 后续会修改博士模板
+
+%----------------------------导言区开始分割线--------------------------------
+
+
+\documentclass[type = master,class = academic]{whu-thesis}
+% type: 可选项为 bachelor, master, doctor
+% class: 可选项为 academic, professional
+% showframe: 显示页面布局框架
+% 以下仅列举了部分可能用到的设置选项，更多用法请参考文档《whu-thesis.pdf》
+
+
+% \PassOptionsToPackage{gbnamefmt = lowercase}{biblatex} % 英文作者姓名不强制大写
+
+\whusetup{
+  info = {
+    title      = {中文论文标题}, % 标题，可使用 \\ 手动换行
+    title*     = {English title},
+    department  = {物理科学与技术学院},
+    department* = {School of Physics and Technology, Wuhan University},
+    author     = {张三},
+    author*    = {San ZHANG},
+    %student-id = {2022202020059},
+    supervisor  = {李四},
+    supervisor* = {Si LI},
+    academic-title  = {教授},
+    academic-title* = {Prof},
+    %supervisor-outer = {}, % 校外导师（非必填）
+    %supervisor-outer* = {}
+    %academic-title-outer = {教授}, % 校外导师职称（非必填）
+    subject = {}, % 学科名称（非必填）
+    major   = {理论物理},
+    major*  = {Theoretical Physics},
+    research-area  = {弦论},
+    research-area* = {Strain Theory},
+    year = 2025,
+    month = 8,
+    keywords = {{关键词1}；{关键词2}；{关键词3}；},
+    keywords* = { {keyword1},{keyword2},{keyword3},},
+    clc = O159, % 分类号
+    udc = xxx,%此处为学号，懒得改函数名了O^O
+  },
+  style = {
+    % 字体相关选项
+    font = times, % 西文字体，可选项为 default, times, xits, termes
+    math-font = termes, % 数学字体，可选项为 default, xits, termes
+    cjk-font = fandol, % 中文字体，可选项为 windows, mac, fandol(Linux/Overleaf/TexPage), sourcehan, none
+    %cjk-fakefont = true, % 使用伪粗体与伪斜体
+    % 参考文献及引用相关选项
+    bib-backend = bibtex, % 参考文献引擎，可选项为 bibtex, biblatex
+    bib-style = numerical, % 参考文献样式，可选项为 numerical, author-year
+    %cite-style = <>, % 引用样式（自定义）
+    bib-resource = {ref/refs.bib}, % 参考文献数据源
+    % 页面相关选项
+    chapter-page-header = true, % 章节首页是否有页眉
+    % bachelor-encover = true, % 本科毕业论文英文封面
+    library, % 图书馆模式（去掉论文中所有的空白页）
+    license, % 使用授权协议书  
+    % fullwidth-stop = true, % 句号样式
+    % footnote-style = <>, % 脚注编号样式
+    % abstract-keywords-type  = blankline, % 摘要与关键词之间样式，可选项为 blankline, newline, vfill
+    % abstract-keywords-type* = blankline, % 摘要与关键词之间样式，可选项为 blankline, newline, vfill
+  }
+}
+\whumodule{algorithm2e}
+
+% ====== 新命令 ======
+
+
+% 修正：使用期刊全称
+\newcommand{\apj}{The Astrophysical Journal}
+\newcommand{\apjl}{The Astrophysical Journal Letters}  
+\newcommand{\apjs}{The Astrophysical Journal Supplement Series}
+\newcommand{\aj}{The Astronomical Journal}
+\newcommand{\mnras}{Monthly Notices of the Royal Astronomical Society}
+\newcommand{\aap}{Astronomy \& Astrophysics}
+\newcommand{\araa}{Annual Review of Astronomy and Astrophysics}
+\newcommand{\pasp}{Publications of the Astronomical Society of the Pacific}
+\newcommand{\nat}{Nature}
+\newcommand{\science}{Science}
+\newcommand{\farcs}{\mbox{$.\!\!^{\prime\prime}$}} %arcsec
+
+
+
+
+
+
+%--------------------------------导言区分割线--------------------------------
+
+
+\begin{document}
+
+\tableofcontents % 目录
+% \listoffigures % 图目录
+% \listoftables % 表目录
+
+% 符号表
+% \begin{notation}
+%   $\omega_n$ & $n$-维欧氏空间中单位球的表面积 \\
+%   $\alpha_n$ & $n$-维欧氏空间中单位球的体积 \\
+% \end{notation}
+
+\mainmatter
+%在src文件夹中创建章节tex，在这里include
+\include{src/chapter1.tex}
+\include{src/chapter2.tex}
+\include{src/chapter3.tex}
+\include{src/chapter4.tex}
+\include{src/chapter5.tex}
+\include{src/chapter6.tex}
+
+
+% 当然你也可以直接在这里写，不过这样不太方便管理
+%\chapter{BBBB}
+
+
+% 参考文献
+\printbibliography
+
+% 致谢
+\begin{acknowledgements}
+  致谢是以简短的文字对课题研究与论文撰写过程中直接给予帮助的人员(例如指导教师、答疑教师及其他人员)表示谢意。致谢是对他人劳动的尊重，也是学术规范。内容限一页
+
+\end{acknowledgements}
+
+
+
+%附录
+\appendix
+\ctexset{
+  chapter/number = \arabic{chapter}
+}
+\include{src/appendix.tex}
+
+
+\end{document}
