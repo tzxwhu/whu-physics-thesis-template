@@ -1531,9 +1531,9 @@
     \begin{minipage}[t][3.5cm]{\textwidth}
       \centering
       \includegraphics [ width = 5 cm ] { logo / whu-name.pdf }
-      \skip_vertical:n { 0.57cm }
-      { \zihao{2} \bfseries 
-        \__whu_spread_box_with_quad:n { \c__whu_name_type_tl } }
+      \skip_vertical:n { 1.2cm }
+      {\fontsize{45pt}{54pt}\selectfont \kaishu
+  \__whu_spread_box_with_separator:nn{\hspace{0.15em}}{\c__whu_name_type_tl}}
       \vfil
     \end{minipage}\par
   }
@@ -1542,7 +1542,7 @@
   {
     \noindent
     \begin{minipage}[t][2.25cm]{\textwidth}
-      \skip_vertical:n { 0.2cm }
+      \skip_vertical:n { 1.4cm }
       \centering 
       \fontsize{15pt}{18pt}
       \selectfont
@@ -1552,7 +1552,7 @@
           {academic} { \raisebox{-0.1em}{\scalebox{1.2}{\usym{2611}}} }  %勾选框 ☑
           {professional} { \raisebox{-0.1em}{\scalebox{1.2}{\usym{2610}}} } %空选框 ☐
         }
-      \hspace{1.5em}
+      \hspace{2em}
       专业型
       \str_case:Vn \g__whu_thesis_class_tl
         {
@@ -1567,8 +1567,8 @@
   {
     \noindent
     \begin{minipage}[t][4.49cm]{\textwidth}
-      \skip_vertical:n { 0.23cm }
-      \centering \zihao{1} \kaishu \l__whu_info_title_tl
+      \skip_vertical:n { 1cm }
+      \centering \zihao{1} \songti \bfseries \l__whu_info_title_tl
     \end{minipage}\par
   }
 %region 个人信息
@@ -1623,7 +1623,7 @@
     \begin{minipage}[c][0.81cm]{\textwidth}
       \centering \heiti \zihao {3}
       \__whu_get_year_digit:nn { \l__whu_info_year_int } { 0 }
-      { \hspace{-0.15em}{\raisebox{-0.73ex}{\scalebox{2.5}{$\circ$}}}\hspace{-0.15em} }
+      { \hspace{-0.18em}{\raisebox{-0.73ex}{\scalebox{2.5}{$\circ$}}}\hspace{-0.15em} }
       \__whu_get_year_digit:nn { \l__whu_info_year_int } { 2 }
       \int_compare:nNnTF 
         { \int_mod:nn { \l__whu_info_year_int } { 10 } } = { 0 }
@@ -1753,7 +1753,7 @@
         \__whu_month_cover_to_english_version:V \l__whu_info_month_int, \c_space_tl \int_use:N\l__whu_info_year_int
       };
   }
-%endregion 本科
+
 %region 硕士
 \cs_new_protected:Npn \__whu_master_cover_ii:
   {
@@ -1776,7 +1776,7 @@
       ( [ shift = { ( 0 , -0.1\textheight ) } ] current~page~text~area.north )
       { 
         \begin{minipage}{\textwidth}
-          \zihao{2} \centering \linespread{1.2}\selectfont
+          \zihao{-2} \centering \bfseries \linespread{1.2}\selectfont
           \l__whu_info_title_en_tl
         \end{minipage}
       };
@@ -1791,14 +1791,15 @@
           { \l__whu_info_supervisor_academic_title_en_tl .~ }
         \renewcommand \arraystretch { 1.2 }
         \AddToHookNext { env / tabular / begin }
-          { \zihao{4} }
-        \begin{tabular}{r@{\hspace{.5em}}l}
-          \c__whu_name_author_en_tl : & \textsc{ \l__whu_info_author_en_tl } \\
-          %\c__whu_name_student_id_en_tl : & \l__whu_info_student_id_tl \\
-          \c__whu_name_supervisor_en_tl : & \textsc{ \l__whu_info_supervisor_en_tl } \\
-          \c__whu_name_major_en_tl : & \l__whu_info_major_en_tl \\
-          \c__whu_name_research_area_en_tl : & \l__whu_info_research_area_en_tl
-        \end{tabular}       
+          { \zihao{-3} }
+        \begin{tabular}{@{}l@{\hspace{0.3em}}c@{\hspace{0.5em}}l@{}}
+              \c__whu_name_author_en_tl       & : & \textsc{\l__whu_info_author_en_tl} \\
+           %\c__whu_name_student_id_en_tl  & : & 
+           %\l__whu_info_student_id_tl \\
+              \c__whu_name_supervisor_en_tl   & : & \textsc{\l__whu_info_supervisor_en_tl} \\
+            \c__whu_name_major_en_tl        & : & \l__whu_info_major_en_tl \\
+            \c__whu_name_research_area_en_tl & : & \l__whu_info_research_area_en_tl
+            \end{tabular}       
       };
   }
 %tag 学校名和logo
@@ -1861,6 +1862,7 @@
           { \l__whu_info_supervisor_academic_title_en_tl .~ }
         \AddToHookNext { env / tabular / begin }
           { \zihao{4} }
+          \centering
           \renewcommand \arraystretch { 1.2 }
         \begin{tabular}{r@{\hspace{.5em}}l}
           \c__whu_name_author_en_tl : & \textsc{ \l__whu_info_author_en_tl } \\
