@@ -1791,12 +1791,12 @@
           { \l__whu_info_supervisor_academic_title_en_tl .~ }
         \renewcommand \arraystretch { 1.2 }
         \AddToHookNext { env / tabular / begin }
-          { \zihao{-3} }
+          { \zihao{-3} \bfseries }
         \begin{tabular}{@{}l@{\hspace{0.3em}}c@{\hspace{0.5em}}l@{}}
-              \c__whu_name_author_en_tl       & : & \textsc{\l__whu_info_author_en_tl} \\
+              \c__whu_name_author_en_tl       & : & {\l__whu_info_author_en_tl} \\
            %\c__whu_name_student_id_en_tl  & : & 
            %\l__whu_info_student_id_tl \\
-              \c__whu_name_supervisor_en_tl   & : & \textsc{\l__whu_info_supervisor_en_tl} \\
+              \c__whu_name_supervisor_en_tl   & : & {\l__whu_info_supervisor_en_tl} \\
             \c__whu_name_major_en_tl        & : & \l__whu_info_major_en_tl \\
             \c__whu_name_research_area_en_tl & : & \l__whu_info_research_area_en_tl
             \end{tabular}       
@@ -1809,8 +1809,8 @@
       {
         \begin{tabular}{c}
           \includegraphics[width=4cm]{./logo/whu-logo.pdf} \\[1em]
-          \zihao{-2}\l__whu_info_department_en_tl \\[1em]
-          \zihao{-2}\textsc{Wuhan~430072, ~P.~ R.~ China}
+          \zihao{-2}\bfseries\l__whu_info_department_en_tl \\[1em]
+          \zihao{-2}{\bfseries Wuhan~430072, ~P.~ R.~ China}
         \end{tabular}
       };
   }
@@ -1820,7 +1820,7 @@
     \node [anchor = south] (date) at
       ([ shift = { ( 0 , 0.01\textheight ) } ] current~page~text~area.south)
       {
-        \zihao{-2}
+        \zihao{-2}\bfseries
         \__whu_month_cover_to_english_version:V \l__whu_info_month_int, \c_space_tl \int_use:N\l__whu_info_year_int
       };
   }
