@@ -1808,9 +1808,9 @@
     \node [anchor = south] at ([ shift = { ( 0 , .5em ) } ] date.north)
       {
         \begin{tabular}{c}
-          \includegraphics[width=4cm]{./logo/whu-logo.pdf} \\[2em]
-          \zihao{-2}\bfseries\l__whu_info_department_en_tl \\[1em]
-          \zihao{-2}{\bfseries Wuhan~430072, ~P.~ R.~ China}
+          \includegraphics[width=4cm]{./logo/whu-logo.pdf} \\[1.5em]
+          \zihao{-3}\bfseries\l__whu_info_department_en_tl \\[1em]
+          \zihao{-3}{\bfseries Wuhan~430072, ~P.~ R.~ China}
         \end{tabular}
       };
   }
@@ -1820,7 +1820,7 @@
     \node [anchor = south] (date) at
       ([ shift = { ( 0 , 0.01\textheight ) } ] current~page~text~area.south)
       {
-        \zihao{-2}\bfseries
+        \zihao{-3}\bfseries
         \__whu_month_cover_to_english_version:V \l__whu_info_month_int, \c_space_tl \int_use:N\l__whu_info_year_int
       };
   }
