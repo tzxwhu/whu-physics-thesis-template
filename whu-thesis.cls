@@ -1808,7 +1808,7 @@
     \node [anchor = south] at ([ shift = { ( 0 , .5em ) } ] date.north)
       {
         \begin{tabular}{c}
-          \includegraphics[width=4cm]{./logo/whu-logo.pdf} \\[1em]
+          \includegraphics[width=4cm]{./logo/whu-logo.pdf} \\[2em]
           \zihao{-2}\bfseries\l__whu_info_department_en_tl \\[1em]
           \zihao{-2}{\bfseries Wuhan~430072, ~P.~ R.~ China}
         \end{tabular}
