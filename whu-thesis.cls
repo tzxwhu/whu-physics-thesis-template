@@ -1826,77 +1826,7 @@
   }
 %endregion 硕士
 %region 博士
-\cs_new_protected:Npn \__whu_doctor_cover_ii:
-  {
-    \pdfbookmark{英文封面}{titlepage-en}
-    \begin{tikzpicture} [ remember~picture, overlay ]
-      % 标题
-      \__whu_doctor_cover_ii_title:
-      % 个人信息
-      \__whu_doctor_cover_ii_information:
-      % 时间
-      \__whu_doctor_cover_ii_date_en:
-      % 学校名和logo
-      \__whu_doctor_cover_ii_logo:
-    \end{tikzpicture}
-  }
-%tag 标题
-\cs_new_protected:Npn \__whu_doctor_cover_ii_title:
-  {
-    \node (title) at
-      ( [ shift = { ( 0 , -0.1\textheight ) } ] current~page~text~area.north )
-      { 
-        \begin{minipage}{\textwidth}
-          \zihao{2} \centering \linespread{1.2}\selectfont
-          \l__whu_info_title_en_tl
-        \end{minipage}
-      };
-  }
-%tag 个人信息
-\cs_new_protected:Npn \__whu_doctor_cover_ii_information:
-  {
-    \node (information) at
-      ( [shift = {(0em, 5em)}]current~page~text~area.center )
-      {
-        \tl_put_left:Nn \l__whu_info_supervisor_en_tl
-          { \l__whu_info_supervisor_academic_title_en_tl .~ }
-        \AddToHookNext { env / tabular / begin }
-          { \zihao{4} }
-          \centering
-          \renewcommand \arraystretch { 1.2 }
-        \begin{tabular}{r@{\hspace{.5em}}l}
-          \c__whu_name_author_en_tl : & \textsc{ \l__whu_info_author_en_tl } \\
-          \c__whu_name_supervisor_en_tl : & \textsc{ \l__whu_info_supervisor_en_tl } \\
-          \c__whu_name_major_en_tl : & \l__whu_info_major_en_tl \\
-          \c__whu_name_research_area_en_tl : & \l__whu_info_research_area_en_tl
-        \end{tabular}       
-      };
-  }
-%tag 学校名和logo
-\cs_new_protected:Npn \__whu_doctor_cover_ii_logo:
-  {
-    \node [anchor = south] at ([ shift = { ( 0 , 2em ) } ] date.north)
-      {
-        \AddToHookNext { env / tabular / begin }
-          { \zihao{-2} }
-        \begin{tabular}{c}
-          \includegraphics[width=4cm]{./logo/whu-logo.pdf} \\[3pt]
-          \l__whu_info_department_en_tl \\[3pt]
-          \textsc{Wuhan~University}
-        \end{tabular}
-      };
-  }
-%tag 时间
-\cs_new_protected:Npn \__whu_doctor_cover_ii_date_en:
-  {
-    \node [anchor = south] (date) at
-      ([ shift = { ( 0 , 0.01\textheight ) } ] current~page~text~area.south)
-      {
-        \zihao{-2}
-        \__whu_month_cover_to_english_version:V \l__whu_info_month_int
-        \c_space_tl \int_use:N\l__whu_info_day_int, \c_space_tl \int_use:N\l__whu_info_year_int
-      };
-  }
+\cs_set_eq:NN \__whu_doctor_cover_ii: \__whu_master_cover_ii:
 %endregion 博士
 %endregion 英文封面
 
@@ -2241,10 +2171,12 @@
             {
               numbering = false,
               format+ = \centering,
-              pagestyle = doctor-frontmatter
+              pagestyle = doctor-frontmatter,
+            
             }
         }
-      \chapter{ \c__whu_name_abstract_tl }
+      \chapter*{ \c__whu_name_abstract_tl }
+      \__whu_add_nochapter_to_toc:n {\heiti 摘\hspace{1em}要}
       \zihao{-4}
       \file_if_exist:nT { src/abstract.tex }
         {
@@ -2268,8 +2200,10 @@
               pagestyle = doctor-frontmatter
             }
         }
-      \chapter{ \c__whu_name_abstract_en_tl }
+      \chapter*{ \c__whu_name_abstract_en_tl }
+      \__whu_add_nochapter_to_toc:n {\heiti ABSTRACT}
       \zihao{-4}
+      % \g__whu_abstract_en_content_tl
       \file_if_exist:nT { src/enabstract.tex }
         {
           \file_input:n { src/enabstract.tex }
@@ -2381,50 +2315,34 @@
   {
     \keys_set:nn { ctex } { contentsname = \c__whu_name_toc_tl }
     \setcounter{tocdepth}{1} % 只到二级标题
-
     % 章条目：四号、25pt；且不显示页码
     \renewcommand{\cftchapfont}{\heiti\fontsize{14pt}{25pt}\selectfont}
-    %\cftpagenumbersoff{chapter}  % 禁用正文章节的页码
-    %\renewcommand{\cftchapleader}{\hfill}
-    
-
-    % 节条目：四号、25pt；页码加括号
+    % 节条目：四号、25pt
     \renewcommand{\cftsecfont}{\normalfont\fontsize{14pt}{25pt}\selectfont}
-    
-
-    % 缩进/编号宽度按你的设定
+    % 缩进/编号宽度设定
     \dim_set:Nn \cftsecindent  { 0em }
     \dim_set:Nn \cftsecnumwidth{ 3.5em }
-
     % 保留引导线（节）
     \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
     \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-    \renewcommand{\cftdotsep}{1.5} % 点线间距，数字越小越密，默认 4.5
+    \renewcommand{\cftdotsep}{1.5} % 点线间距，数字越小越密
   }
-
-
-
-%tag 博士设置
 %tag 博士设置
 \cs_new:Npn \__whu_doctor_set_tocline:
-  {
+ {
     \keys_set:nn { ctex } { contentsname = \c__whu_name_toc_tl }
     \setcounter{tocdepth}{1} % 只到二级标题
-
     % 章条目：四号、25pt；且不显示页码
     \renewcommand{\cftchapfont}{\heiti\fontsize{14pt}{25pt}\selectfont}
-
-    % 节条目：四号、25pt；页码加括号
+    % 节条目：四号、25pt
     \renewcommand{\cftsecfont}{\normalfont\fontsize{14pt}{25pt}\selectfont}
-
-    % 缩进/编号宽度按你的设定
+    % 缩进/编号宽度设定
     \dim_set:Nn \cftsecindent  { 0em }
     \dim_set:Nn \cftsecnumwidth{ 3.5em }
-
     % 保留引导线（节）
     \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
     \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-    \renewcommand{\cftdotsep}{1.5} % 点线间距，数字越小越密，默认 4.5
+    \renewcommand{\cftdotsep}{1.5} % 点线间距，数字越小越密
   }
 %tag 启动设置
 \use:c { __whu_ \g__whu_thesis_type_tl _set_tocline: }
@@ -2476,20 +2394,6 @@
   }
 %endregion 插图和表格
 
-%tag 研究成果
-\NewDocumentEnvironment{publications}{ +b }
-  {
-    \group_begin:
-      \keys_set:nn { ctex }
-        {
-          chapter / format = \centering \zihao{-2} \heiti,
-        }
-      \chapter* { 攻读硕士学位期间取得的研究成果 }
-      \addcontentsline{toc}{chapter}{攻读硕士学位期间取得的研究成果}
-      #1
-    \group_end:
-  }{}
-  
 %tag 致谢环境
 \NewDocumentEnvironment{acknowledgements}{ +b }
   {
@@ -2565,13 +2469,55 @@
         }
       }
   }
-
+%博士
+\cs_new:Npn \__whu_doctor_set_appendix:
+  {
+    \AddToHook { cmd / appendix / after }
+      {
+        \renewcommand{ \theequation }{ \thechapter \arabic{equation} }
+        % 修改附录编号格式为数字
+        \renewcommand{\thechapter}{\arabic{chapter}}
+        \renewcommand{\@chapapp}{附录}
+        % 重新定义附录章节的目录添加方式
+        \renewcommand{\@chapter}[2][]{
+          \ifnum \c@secnumdepth >\m@ne
+            \refstepcounter{chapter}%
+            \typeout{\@chapapp\space\thechapter.}%
+            % 使用黑体字体格式添加到目录（有点线、有页码）
+            \addtocontents{toc}{\protect\renewcommand{\protect\cftchapfont}{\heiti\fontsize{14pt}{25pt}\selectfont}}
+            \addtocontents{toc}{\protect\renewcommand{\protect\cftchapleader}{\protect\cftdotfill{\protect\cftdotsep}}}
+            \addtocontents{toc}{\protect\cftpagenumberson{chapter}}
+            \addcontentsline{toc}{chapter}{\@chapapp\thechapter\quad ##2}
+            % 恢复正文章节的格式（黑体、无点线、无页码）
+            \addtocontents{toc}{\protect\renewcommand{\protect\cftchapfont}{\heiti\fontsize{14pt}{25pt}\selectfont}}
+            \addtocontents{toc}{\protect\renewcommand{\protect\cftchapleader}{\protect\hfill}}
+            \addtocontents{toc}{\protect\cftpagenumbersoff{chapter}}
+          \else
+            \addtocontents{toc}{\protect\renewcommand{\protect\cftchapfont}{\heiti\fontsize{14pt}{25pt}\selectfont}}
+            \addtocontents{toc}{\protect\renewcommand{\protect\cftchapleader}{\protect\cftdotfill{\protect\cftdotsep}}}
+            \addtocontents{toc}{\protect\cftpagenumberson{chapter}}
+            \addcontentsline{toc}{chapter}{##2}
+            % 恢复正文章节的格式
+            \addtocontents{toc}{\protect\renewcommand{\protect\cftchapfont}{\heiti\fontsize{14pt}{25pt}\selectfont}}
+            \addtocontents{toc}{\protect\renewcommand{\protect\cftchapleader}{\protect\hfill}}
+            \addtocontents{toc}{\protect\cftpagenumbersoff{chapter}}
+          \fi
+          \chaptermark{##1}%
+          \if@twocolumn
+            \@topnewpage[\@makechapterhead{##2}]%
+          \else
+            \@makechapterhead{##2}%
+            \@afterheading
+          \fi
+        }
+      }
+  }
 % 根据论文类型设置附录
 \str_case:xn { \tl_to_str:N \g__whu_thesis_type_tl }
   {
     { bachelor } { \__whu_bachelor_set_appendix: }
     { master   } { \__whu_master_set_appendix: }
-    { doctor   } { \__whu_master_set_appendix: } % 博士也用相同设置
+    { doctor   } { \__whu_doctor_set_appendix: } 
   }
 %endregion 附录设置
 
