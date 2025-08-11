@@ -1,0 +1,23 @@
+% !TEX program = lualatex
+% 书脊！！！
+\documentclass{ltjtarticle}
+\usepackage{ctexsize}
+\usepackage{geometry}
+\geometry{margin = 3cm, ignoreall}
+\usepackage{luatexja-fontspec}
+
+% 设置仿宋并加上伪粗体功能
+\setmainjfont{FandolFang-Regular.otf}[
+    AutoFakeBold = 2.5 % 数值越大越粗，可以改成3看看效果
+]
+
+\begin{document}
+\pagestyle{empty}
+\leavevmode\vfil 
+\noindent \zihao{-4}
+    {\bfseries 武汉大学博士学位论文} 
+    \hfill
+    {\bfseries 论文题目} % 论文题目
+    \hfill 
+    {\bfseries  张三} % 作者姓名
+\end{document}
