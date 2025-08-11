@@ -1,0 +1,47 @@
+The LaTeX Project Public License
+LPPL Version 1.3c  2008-05-04
+
+Copyright 2025, Tzxwhu
+
+This work may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either version 1.3c
+of this license or (at your option) any later version.
+
+The latest version of this license is in
+   http://www.latex-project.org/lppl.txt
+and version 1.3c or later is part of all distributions of LaTeX
+version 2008 or later.
+
+This work has the LPPL maintenance status "maintained".
+
+The Current Maintainer of this work is: Tzxwhu.
+
+This work consists of all files in the repository:
+  whu-thesis.cls
+  *.tex
+  figures/*
+  bibliography/*
+  and any other files contained in this repository.
+
+---
+
+LPPL Summary:
+
+1. You are allowed to copy and distribute this work, in its entirety or in part,
+   without payment, provided that you keep the copyright notice intact.
+
+2. You are allowed to modify this work, but if you distribute a modified version:
+   a) You must change the file names (except in cases of small bug fixes).
+   b) You must clearly identify your changes in the source code.
+   c) You must not misrepresent the modified version as being the original work.
+
+3. You must not distribute this work (or any derived work) under a license that
+   conflicts with the LPPL.
+
+4. This license ensures that the LaTeX community can rely on stable versions of
+   works while still allowing improvements.
+
+---
+
+For more details, please read the full text of the LPPL:
+http://www.latex-project.org/lppl.txt
