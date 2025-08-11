@@ -1,42 +1,4 @@
 The LaTeX Project Public License
-LPPL Version 1.3c  2008-05-04
-
-Copyright 2025, Tzxwhu
-
-This work may be distributed and/or modified under the
-conditions of the LaTeX Project Public License, either version 1.3c
-of this license or (at your option) any later version.
-
-The latest version of this license is in:
-  https://www.latex-project.org/lppl.txt
-and version 1.3c or later is part of all distributions of LaTeX
-version 2008 or later.
-
-This work has the LPPL maintenance status "maintained".
-
-The Current Maintainer of this work is: Tzxwhu.
-
-This work consists of all files in the repository:
-  whu-physics-thesis-template.cls
-  *.tex
-  figs/*
-  ref/*
-  and any other files contained in this repository.
-
-----------------------------------------------------------------------
-LPPL LICENSE TEXT
-----------------------------------------------------------------------
-
-PREAMBLE
-========
-
-The LaTeX Project Public License (LPPL) is the license under which
-the base LaTeX distribution is distributed. You may use this license
-for any work that you wish to distribute that is based on and/or
-derived from LaTeX.
-
-
-The LaTeX Project Public License
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 LPPL Version 1.3c  2008-05-04
