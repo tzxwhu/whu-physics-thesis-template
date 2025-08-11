@@ -1,15 +1,17 @@
-
-% 本模板适用于武汉大学物理学院硕博学位论文，在github上的武大毕业论文模板（https://github.com/whutug/whu-thesis，在此，向作者WHU TeX User Group致谢）的基础上做了大量的修改，以符合最新的物院毕业论文模板要求（几乎全部），如果后续物院模板更新，则可联系作者做相应的修改。-- Author：Zhengxin Tang
+% Author：Zhengxin Tang（tang_zx@whu.edu.cn）
+% 武汉大学物理学院硕博学位论文模板（https://github.com/tzxwhu/whu-physics-thesis-template）
+% 在github上的武大毕业论文模板（https://github.com/whutug/whu-thesis）的基础上做了大量的修改，以符合最新的物院毕业论文模板要求（几乎全部）。在此，向原作者 WHU TeX User Group 致谢！！！
+% 如果后续物院模板更新，则可联系作者做相应的修改。
  
 
 
-%--------------------------------- tutorial----------------------------
+%--------------------------------- tutorials----------------------------
 % 以下仅列举了部分可能用到的设置选项，更多用法请参考文档《whuthesis.pdf》
 % 论文具体内容的要求可以按照《武汉大学物理学院毕业论文格式3》
 
 %----------------------------导言区开始分割线--------------------------------
 
-\documentclass[type = doctor,class = academic]{whu-thesis}
+\documentclass[type = master,class = academic]{whu-thesis}
 % type: 可选项为 bachelor, master, doctor
 % class: 可选项为 academic, professional
 % showframe: 显示页面布局框架
@@ -23,9 +25,9 @@
     title*     = {English title},
     department  = {物理科学与技术学院},
     department* = {School of Physics and Technology, Wuhan University},
+    student_id = 0000000000000,% 学号
     author     = {张三},
     author*    = {San ZHANG},
-    %student-id = {2022202020059},
     supervisor  = {李四},
     supervisor* = {Si LI},
     academic-title  = {教授},
@@ -38,12 +40,11 @@
     major*  = {Theoretical Physics},
     research-area  = {弦论},
     research-area* = {String Theory},
-    year = 2025,
+    year = 2025, % 日期
     month = 8,
     keywords = {{关键词1}；{关键词2}；{关键词3}；},
     keywords* = { {keyword1},{keyword2},{keyword3},},
     clc = O159, % 分类号
-    udc = xxx,%此处为学号，懒得改函数名了O^O
   },
   style = {
     % 字体相关选项
@@ -106,7 +107,7 @@
 % \end{notation}
 
 \mainmatter
-%在src文件夹中创建章节tex，在这里include
+%在src文件夹中创建章节tex，在这里include。如需增加章节，按此方式即可；若删除章节，删除“src/.tex”文件，并在此处删除相应的\include{src/.tex}
 \include{src/chapter1.tex}
 \include{src/chapter2.tex}
 \include{src/chapter3.tex}
@@ -114,12 +115,11 @@
 \include{src/chapter5.tex}
 \include{src/chapter6.tex}
 
-
 % 当然你也可以直接在这里写，不过这样不太方便管理
 %\chapter{BBBB}
 
 
-% 参考文献
+% 打印参考文献
 \printbibliography
 
 % 致谢
@@ -137,11 +137,12 @@
 
 
 
-%附录
+% 附录
 \appendix
 \ctexset{
   chapter/number = \arabic{chapter}
 }
+
 \include{src/appendix.tex}
 
 

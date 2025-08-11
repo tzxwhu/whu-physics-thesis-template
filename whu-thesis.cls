@@ -1214,7 +1214,7 @@
     title*          .tl_set:N = \l__whu_info_title_en_tl,
     department      .tl_set:N = \l__whu_info_department_tl,
     department*     .tl_set:N = \l__whu_info_department_en_tl,
-    student-id      .tl_set:N = \l__whu_info_student_id_tl,
+    student_id      .tl_set:N = \l__whu_info_student_id_tl,
     author          .tl_set:N = \l__whu_info_author_tl,
     author*         .tl_set:N = \l__whu_info_author_en_tl,
     subject         .tl_set:N = \l__whu_info_subject_tl,
@@ -1231,7 +1231,6 @@
     research-area*  .tl_set:N = \l__whu_info_research_area_en_tl,
     clc             .tl_set:N = \l__whu_info_clc_tl,
     secret-level    .tl_set:N = \l__whu_info_secret_level_tl,
-    udc             .tl_set:N = \l__whu_info_udc_tl,
     year           .int_set:N = \l__whu_info_year_int,
     month          .int_set:N = \l__whu_info_month_int,
     day            .int_set:N = \l__whu_info_day_int,
@@ -1248,8 +1247,7 @@
     keywords* = {\LaTeX{}, Thesis, Template, Wuhan~University},
     clc = \c_empty_tl,
     secret-level = \c_empty_tl,
-    udc = \c_empty_tl,
-    student-id = xxxxxxxxxxx
+    student_id= \c_empty_tl,
   }
 
 %tag 函数，用于定义常量
@@ -1307,7 +1305,7 @@
         { secret_level } { 密级 },
         { clc } { 分类号 },
         { numbering } { 编号 },
-        { udc } { UDC },
+        { student_id } { 学号 },
         { subject_major_academic } { 学科、专业名称 },
         { subject_major_professional } { 专业学位类别、领域 },
         { academic } { 学术学位  },
@@ -1317,8 +1315,7 @@
       { \__whu_define_name:nn ##1 }
     \clist_map_inline:nn
       {
-        { author } { 研究生姓名 } { Candidate },
-        { student_id } { 学号 } {Student~ number},
+        { author } { 研究生姓名 } { Candidate }, 
         { supervisor } { 指导教师姓名、职称 } {Supervisor},
         { supervisor_outer } { 指导教师姓名、职称 } { Supervisor Outside },
         { major } { 专业名称 } { Major },
@@ -1438,7 +1435,6 @@
     \clist_set:Nx \l__whu_tmpa_clist
       {
         \c__whu_name_author_tl,
-        %\c__whu_name_student_id_tl,
         \c__whu_name_major_tl,
         \c__whu_name_department_tl,
         \c__whu_name_supervisor_tl
@@ -1517,7 +1513,7 @@
     \begin{minipage}[b][0.9cm][b]{\textwidth}
       \fangsong \zihao{4} \mode_leave_vertical:
       \__whu_spread_box_with_end_spaces:nn { 2.04cm } { 学号 }
-      \underline { \hbox_to_wd:nn { 3.4cm } { \hfill \l__whu_info_udc_tl \hfill } }
+      \underline { \hbox_to_wd:nn { 3.4cm } { \hfill \l__whu_info_student_id_tl \hfill } }
       \hfill
       \__whu_spread_box_with_end_spaces:nn { 2.34cm } { 学校代码 }
       \underline { \hbox_to_wd:nn { 3.4cm } { \hfill 10486 \hfill } }
@@ -1577,7 +1573,6 @@
     \clist_set:Nx \l__whu_tmpa_clist % 个人信息第一列
       {
         \c__whu_name_author_tl,
-        %\c__whu_name_student_id_tl,
         \c__whu_name_supervisor_tl,
         \tl_if_empty:NF \l__whu_info_supervisor_outer_tl
           { \c__whu_name_supervisor_outer_tl },
@@ -1587,7 +1582,6 @@
     \clist_set:Nx \l__whu_tmpb_clist % 个人信息第二列
       {
         \l__whu_info_author_tl,
-        %\l__whu_info_student_id_tl,
         \l__whu_info_supervisor_tl \l__whu_info_supervisor_academic_title_tl,
         \tl_if_empty:NF \l__whu_info_supervisor_outer_tl
           { \l__whu_info_supervisor_outer_tl 
@@ -1794,8 +1788,6 @@
           { \zihao{-3} \bfseries }
         \begin{tabular}{@{}l@{\hspace{0.3em}}c@{\hspace{0.5em}}l@{}}
               \c__whu_name_author_en_tl       & : & {\l__whu_info_author_en_tl} \\
-           %\c__whu_name_student_id_en_tl  & : & 
-           %\l__whu_info_student_id_tl \\
               \c__whu_name_supervisor_en_tl   & : & {\l__whu_info_supervisor_en_tl} \\
             \c__whu_name_major_en_tl        & : & \l__whu_info_major_en_tl \\
             \c__whu_name_research_area_en_tl & : & \l__whu_info_research_area_en_tl
