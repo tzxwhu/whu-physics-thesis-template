@@ -451,7 +451,8 @@
 \RequirePackage { thmtools }
 \RequirePackage { tikzpagenodes }
 \RequirePackage { tocloft }
- 
+\RequirePackage{silence} 
+
 \AtEndPreamble
   {
     \RequirePackage { hyperref }
@@ -484,10 +485,10 @@
     \geometry
       {
         left       = 28mm,
-        right      = 25mm,
+        right      = 28mm,
         top        = 30mm,
-        bottom     = 29mm,
-        headheight = 15pt
+        bottom     = 28mm,
+        headheight = 25pt
       }
   }
 %tag 博士
@@ -496,10 +497,10 @@
     \geometry
       {
         left       = 28mm,
-        right      = 25mm,
+        right      = 28mm,
         top        = 30mm,
-        bottom     = 29mm,
-        headheight = 15pt
+        bottom     = 28mm,
+        headheight = 25pt
       }
   }
 %tag 设置
@@ -528,21 +529,21 @@
 \cs_new_protected:Npn \__whu_set_cjk_main_font:nn #1#2
   {
     \setCJKmainfont{#1}[#2]
-    \newCJKfontfamily [zhsong] \songti {#1} [#2]
+    \newCJKfontfamily [zhsong] \songti {#1} [#2, Script = Default]
   }
 \cs_new_protected:Npn \__whu_set_cjk_sans_font:nn #1#2
   {
     \setCJKsansfont{#1}[#2]
-    \newCJKfontfamily [zhhei] \heiti {#1} [#2]
+    \newCJKfontfamily [zhhei] \heiti {#1} [#2, Script = Default]
   }
 \cs_new_protected:Npn \__whu_set_cjk_mono_font:nn #1#2
   {
     \setCJKmonofont{#1}[#2]
-    \newCJKfontfamily [zhfs] \fangsong {#1} [#2]
+    \newCJKfontfamily [zhfs] \fangsong {#1} [#2, Script = Default]
   }
 \cs_new_protected:Npn \__whu_set_cjk_font_kaishu:nn #1#2
   {
-    \newCJKfontfamily [zhkai] \kaishu {#1} [#2]
+    \newCJKfontfamily [zhkai] \kaishu {#1} [#2, Script = Default]
   }
 \tl_const:Nn \l__whu_cjk_font_options_tl { UprightFont = *, ItalicFont = *, AutoFakeBold }
 \cs_new_protected:Npx \__whu_set_cjk_main_font:n #1
@@ -585,8 +586,8 @@
   {
     \setmainfont { Times ~ New ~ Roman }
       [
-        SmallCapsFont = { TeX ~ Gyre ~ Termes },
-        SmallCapsFeatures = { Letters = SmallCaps }
+        SmallCapsFont = { Times ~ New ~ Roman },
+        SmallCapsFeatures = { Scale = 0.8, LetterSpace = 5 }
       ]
   }
 %tag xits
@@ -735,6 +736,7 @@
       }
   }
 %tag fandol
+%tag fandol
 \cs_new_protected:Npn \__whu_style_cjk_font_set_fandol:
   {
     \bool_if:NTF \g__whu_style_cjk_fakefont_bool
@@ -742,17 +744,27 @@
         \__whu_set_cjk_main_font:nn { FandolSong-Regular.otf }
           {
             BoldFont      = FandolSong-Bold.otf,
-            AutoFakeSlant = 0.167
+            AutoFakeSlant = 0.167,
+            Script        = Default
           }
         \__whu_set_cjk_sans_font:nn { FandolHei-Regular.otf }
           {
             BoldFont      = FandolHei-Bold.otf,
-            AutoFakeSlant = 0.167
+            AutoFakeSlant = 0.167,
+            Script        = Default
           }
         \__whu_set_cjk_mono_font:nn { FandolFang-Regular.otf }
-          { AutoFakeBold = 4, AutoFakeSlant = 0.167 }
+          { 
+            AutoFakeBold = 4, 
+            AutoFakeSlant = 0.167,
+            Script        = Default
+          }
         \__whu_set_cjk_font_kaishu:nn { FandolKai-Regular.otf }
-          { AutoFakeBold = 4, AutoFakeSlant = 0.167 }
+          { 
+            AutoFakeBold = 4, 
+            AutoFakeSlant = 0.167,
+            Script        = Default
+          }
       }
       {
         \__whu_set_cjk_main_font:nn { FandolSong-Regular.otf }
@@ -760,19 +772,33 @@
             BoldFont       = FandolSong-Bold.otf,
             ItalicFont     = FandolKai-Regular.otf,
             SlantedFont    = FandolKai-Regular.otf,
-            BoldItalicFont = FandolSong-Bold.otf
+            BoldItalicFont = FandolSong-Bold.otf,
+            Script         = Default
           }
         \__whu_set_cjk_sans_font:nn { FandolHei-Regular.otf }
           {
             BoldFont       = FandolHei-Bold.otf,
             ItalicFont     = *,
             SlantedFont    = *,
-            BoldItalicFont = FandolHei-Bold.otf
+            BoldItalicFont = FandolHei-Bold.otf,
+            Script         = Default
           }
         \__whu_set_cjk_mono_font:nn { FandolFang-Regular.otf }
-          { BoldFont = *, ItalicFont = *, SlantedFont = *, BoldItalicFont = * }
+          { 
+            BoldFont = *, 
+            ItalicFont = *, 
+            SlantedFont = *, 
+            BoldItalicFont = *,
+            Script = Default
+          }
         \__whu_set_cjk_font_kaishu:nn { FandolKai-Regular.otf }
-          { BoldFont = *, ItalicFont = *, SlantedFont = *, BoldItalicFont = * }
+          { 
+            BoldFont = *, 
+            ItalicFont = *, 
+            SlantedFont = *, 
+            BoldItalicFont = *,
+            Script = Default
+          }
       }
   }
 %tag founder
@@ -1080,32 +1106,28 @@
 %tag 硕士
 % 页眉从中文摘要开始至论文末，偶数页码内容为：武汉大学硕士学位论文，奇数页码内容为学位论文题目。
 % 摘要页码用罗马数字单独编排，并标注在每页页脚中部，英文摘要页码续接中文摘要的页码。
+% 正文前页眉页脚
 \fancypagestyle { master-frontmatter } {
   \fancyhf { }
-  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\headrulewidth}{0.5pt}
   \renewcommand{\footrulewidth}{0.5pt}  
-  
-  \fancyhead [CE] { 
-    {\kaishu\zihao{-2} 武汉大学硕士学位论文}
-    \vspace{3pt}      
-    \hrule width\textwidth height0.5pt    
-    \vspace{1pt}                          
-    \hrule width\textwidth height0.5pt   
+  \fancyhead [CE] {
+        {\kaishu\zihao{-2} 武汉大学硕士学位论文}
+        \vspace{3pt} 
+        {\hrule width\textwidth height0.5pt } 
+        \vspace{-12.5pt}
   }
   \fancyhead [CO]{ 
-  {\kaishu\zihao{-2} \l__whu_info_header_title_tl }
-  \vspace{3pt}       
-    \hrule width\textwidth height0.5pt    
-    \vspace{1pt}                          
-    \hrule width\textwidth height0.5pt     
+        {\kaishu\zihao{-2} \l__whu_info_header_title_tl }
+        \vspace{3pt} 
+        {\hrule width\textwidth height0.5pt } 
+        \vspace{-12.5pt}       
   }
   \fancyfoot [C] { 
-    \zihao{5} \Roman{page} 
+    \zihao{5} \Roman{page}  
   }
-  \setlength{\headheight}{35pt}
-  \setlength{\headsep}{15pt}      % 添加这行，调整页眉与正文的距离
-  \setlength{\footskip}{30pt}
 }
+% 正文chapter页眉页脚简洁样式
 \fancypagestyle{master-chapter-plain}{
   \fancyhf{}
   \renewcommand{\headrulewidth}{0pt}
@@ -1114,58 +1136,48 @@
     \zihao{5} \arabic{page} 
   }
 }
-\fancypagestyle {master-mainmatter}
-  {
+% 正文页眉页脚
+\fancypagestyle {master-mainmatter} {
   \fancyhf { }
-  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\headrulewidth}{0.5pt}
   \renewcommand{\footrulewidth}{0.5pt}  
-  
-  \fancyhead [CE] { 
-    {\kaishu\zihao{-2} 武汉大学硕士学位论文}
-    \vspace{3pt}      
-    \hrule width\textwidth height0.5pt    
-    \vspace{1pt}                         
-    \hrule width\textwidth height0.5pt    
+  \fancyhead [CE] {
+        {\kaishu\zihao{-2} 武汉大学硕士学位论文}
+        \vspace{3pt} 
+        {\hrule width\textwidth height0.5pt } 
+        \vspace{-12.5pt}
   }
   \fancyhead [CO]{ 
-  {\kaishu\zihao{-2} \l__whu_info_header_title_tl}
-  \vspace{3pt}       
-    \hrule width\textwidth height0.5pt    
-    \vspace{1pt}                         
-    \hrule width\textwidth height0.5pt   
+        {\kaishu\zihao{-2} \l__whu_info_header_title_tl }
+        \vspace{3pt} 
+        {\hrule width\textwidth height0.5pt } 
+        \vspace{-12.5pt}       
   }
-  \fancyfoot [C]  { \zihao{5} \arabic{page} }
-  \setlength{\headheight}{35pt}
-  \setlength{\headsep}{15pt}
-  \setlength{\footskip}{30pt}
+  \fancyfoot [C] { 
+    \zihao{5} \arabic{page} 
   }
+}
 %tag 博士
 % 页眉从中文摘要开始至论文末，偶数页码内容为“武汉大学博士学位论文”，奇数页码内容为学位论文题目。
 \fancypagestyle { doctor-frontmatter } {
   \fancyhf { }
-  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\headrulewidth}{0.5pt}
   \renewcommand{\footrulewidth}{0.5pt}  
-  
-  \fancyhead [CE] { 
-    {\kaishu\zihao{-2} 武汉大学博士学位论文}
-    \vspace{3pt}      
-    \hrule width\textwidth height0.5pt    
-    \vspace{1pt}                          
-    \hrule width\textwidth height0.5pt   
+  \fancyhead [CE] {
+        {\kaishu\zihao{-2} 武汉大学博士学位论文}
+        \vspace{3pt} 
+        {\hrule width\textwidth height0.5pt } 
+        \vspace{-12.5pt}
   }
   \fancyhead [CO]{ 
-  {\kaishu\zihao{-2} \l__whu_info_header_title_tl }
-  \vspace{3pt}       
-    \hrule width\textwidth height0.5pt    
-    \vspace{1pt}                          
-    \hrule width\textwidth height0.5pt     
+        {\kaishu\zihao{-2} \l__whu_info_header_title_tl }
+        \vspace{3pt} 
+        {\hrule width\textwidth height0.5pt } 
+        \vspace{-12.5pt}       
   }
   \fancyfoot [C] { 
-    \zihao{5} \Roman{page} 
+    \zihao{5} \Roman{page}  
   }
-  \setlength{\headheight}{35pt}
-  \setlength{\headsep}{15pt}      % 添加这行，调整页眉与正文的距离
-  \setlength{\footskip}{30pt}
 }
 \fancypagestyle{doctor-chapter-plain}{
   \fancyhf{}
@@ -1178,27 +1190,23 @@
 \fancypagestyle {doctor-mainmatter}
   {
   \fancyhf { }
-  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\headrulewidth}{0.5pt}
   \renewcommand{\footrulewidth}{0.5pt}  
-  
-  \fancyhead [CE] { 
-    {\kaishu\zihao{-2} 武汉大学博士学位论文}
-    \vspace{3pt}      
-    \hrule width\textwidth height0.5pt    
-    \vspace{1pt}                         
-    \hrule width\textwidth height0.5pt    
+  \fancyhead [CE] {
+        {\kaishu\zihao{-2} 武汉大学博士学位论文}
+        \vspace{3pt} 
+        {\hrule width\textwidth height0.5pt } 
+        \vspace{-12.5pt}
   }
   \fancyhead [CO]{ 
-  {\kaishu\zihao{-2} \l__whu_info_header_title_tl}
-  \vspace{3pt}       
-    \hrule width\textwidth height0.5pt    
-    \vspace{1pt}                         
-    \hrule width\textwidth height0.5pt   
+        {\kaishu\zihao{-2} \l__whu_info_header_title_tl }
+        \vspace{3pt} 
+        {\hrule width\textwidth height0.5pt } 
+        \vspace{-12.5pt}       
   }
-  \fancyfoot [C]  { \zihao{5} \arabic{page} }
-  \setlength{\headheight}{35pt}
-  \setlength{\headsep}{15pt}
-  \setlength{\footskip}{30pt}
+  \fancyfoot [C] { 
+    \zihao{5} \arabic{page} 
+  }
   }
 %tag 给-\mainmatter-添加钩子
 \AddToHook{ cmd / mainmatter / after }
